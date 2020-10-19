@@ -279,3 +279,10 @@ function createDownloadLink(blob) {
 	function createVisualizer(blob) {
 		wavesurfer.loadBlob(blob)
 	}
+
+	function downloadImage() {
+		var link = document.createElement('a');
+		link.download = 'filename.png';
+		link.href = document.querySelector('canvas').toDataURL()
+		link.click();
+	}

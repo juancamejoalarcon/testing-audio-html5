@@ -1,12 +1,14 @@
 import runInitialCountDown from '../initial_countdown/inital_countdown'
 import timer from '../timer/timer'
 import { hide, show } from '../common'
-import { initRecorder, destroyRecorder } from '../wave/wave_recorder/wave_recorder'
-import { createWave, getWaveSurfer, setEditorEvents } from '../wave/wave_editor/wave_editor'
+import { initRecorder, destroyRecorder, getAudioRecorded } from '../wave/wave_recorder/wave_recorder'
+import { createWave, getWaveSurfer, setEditorEvents, destroyWave } from '../wave/wave_editor/wave_editor'
+import { newGalleryEl } from '../gallery/gallery'
 
 let grabar_boton;
 let play_boton;
 let is_recording = false;
+let is_editing = false;
 
 const playerButtons = (enable) => {
     play_boton = document.querySelector('#play-button')
@@ -22,27 +24,37 @@ const playerButtons = (enable) => {
 }
 
 const grabar = () => {
-    if (!is_recording) {
-        is_recording = true
-        grabar_boton.disabled = true
-        runInitialCountDown().then(() => {
-            grabar_boton.disabled = false
-            grabar_boton.textContent = 'Finalizar'
-            initRecorder().then(() => {
-                createWave()
-                playerButtons(true)
-                setEditorEvents()
-            })
-            timer.initTimer().then(() => {
-                destroyRecorder()
-                grabar_boton.textContent = 'Grabar otro'
-            })
+    if (is_editing) {
+        newGalleryEl(getAudioRecorded()).then(() => {
+            destroyWave()
+            is_recording = false
+            is_editing = false
+            grabar()
         })
     } else {
-        is_recording = false
-        destroyRecorder()
-        timer.destroyTimer()
-        grabar_boton.textContent = 'Grabar otro'
+        if (!is_recording) {
+            is_recording = true
+            grabar_boton.disabled = true
+            runInitialCountDown().then(() => {
+                grabar_boton.disabled = false
+                grabar_boton.textContent = 'Finalizar'
+                initRecorder().then(() => {
+                    createWave()
+                    playerButtons(true)
+                    setEditorEvents()
+                    is_editing = true
+                })
+                timer.initTimer().then(() => {
+                    destroyRecorder()
+                    grabar_boton.textContent = 'Grabar otro'
+                })
+            })
+        } else {
+            is_recording = false
+            destroyRecorder()
+            timer.destroyTimer()
+            grabar_boton.textContent = 'Grabar otro'
+        }
     }
 }
 const createMenu = () => {

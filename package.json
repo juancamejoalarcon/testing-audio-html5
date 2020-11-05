@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "easytimer.js": "^4.3.0",
+    "html2canvas": "^1.0.0-rc.7",
     "wavesurfer.js": "^4.2.0"
   }
 }

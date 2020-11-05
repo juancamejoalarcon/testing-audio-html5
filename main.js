@@ -9,10 +9,13 @@ import "./src/wave/wave_recorder/wave_recorder.css";
 import wave_recorder from "./src/wave/wave_recorder/wave_recorder.html.js";
 import "./src/wave/wave_editor/wave_editor.css";
 import wave_editor from "./src/wave/wave_editor/wave_editor.html.js";
+import "./src/gallery/gallery.css";
+import gallery from "./src/gallery/gallery.html.js";
 export default `
     ${initial_countdown}
     ${timer}
     ${wave_recorder}
     ${wave_editor}
     ${menu_buttons}
+    ${gallery}
 `;

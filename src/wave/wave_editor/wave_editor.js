@@ -30,6 +30,10 @@ const createWave = () => {
 
 }
 
+const destroyWave = () => {
+    wavesurferEditor.destroy()
+}
+
 const getWaveSurfer = () => {
     return wavesurferEditor.playPause.bind(wavesurferEditor)
 }
@@ -57,4 +61,4 @@ const setEditorEvents = () => {
     })
 }
 
-export { createWave, getWaveSurfer, setEditorEvents }
+export { createWave, getWaveSurfer, setEditorEvents, destroyWave }

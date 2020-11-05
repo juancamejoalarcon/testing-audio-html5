@@ -10,11 +10,11 @@ export default `
                 <div class="menu-buttons__wave-editor__block">
                     <div class="color_picker">
                         <input type="color" id="waveColorSelection" name="favcolor" value="#ff0000">
-                        <label for="favcolor">Color wave:</label>
+                        <label for="favcolor">Color wave</label>
                     </div>
                     <div class="color_picker">
                         <input type="color" id="backgroundColorSelection" name="favcolor" value="#ff0000">
-                        <label for="favcolor">Color background:</label>
+                        <label for="favcolor">Color background</label>
                     </div>
                 </div>
                 <div class="menu-buttons__wave-editor__block">

@@ -3,8 +3,8 @@ const crono = new Timer();
 
 const timer = {
     initTimer: () => {
-        const cronoEl = document.getElementById('currentTime')
-        const cronoContainer = document.getElementById('timer-container')
+        const cronoEl = document.querySelector('#' + window.soundSounerId).shadowRoot.getElementById('currentTime')
+        const cronoContainer = document.querySelector('#' + window.soundSounerId).shadowRoot.getElementById('timer-container')
         cronoContainer.style.display = 'block'
             return new Promise((resolve, reject) => {
                 crono.start({countdown: true, startValues: {seconds: 30}});
@@ -19,7 +19,7 @@ const timer = {
             });
         },
     destroyTimer: () => {
-        document.getElementById('timer-container').style.display = 'none'
+        document.querySelector('#' + window.soundSounerId).shadowRoot.getElementById('timer-container').style.display = 'none'
         
     }
 }

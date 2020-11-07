@@ -12,7 +12,7 @@ let wavesurferEditor;
 const createWave = () => {
     if (wavesurferEditor) wavesurferEditor.destroy()
     wavesurferEditor = WaveSurfer.create({
-        container: document.querySelector('#waveeditor'),
+        container: document.querySelector('#' + window.soundSounerId).shadowRoot.querySelector('#waveeditor'),
         barWidth,
         barHeight,
         barGap,
@@ -39,23 +39,23 @@ const getWaveSurfer = () => {
 }
 
 const setEditorEvents = () => {
-    document.getElementById('waveColorSelection').addEventListener('change', (e) => {
+    document.querySelector('#' + window.soundSounerId).shadowRoot.getElementById('waveColorSelection').addEventListener('change', (e) => {
         waveColor = e.target.value;
         createWave()
     })
-    document.getElementById('backgroundColorSelection').addEventListener('change', (e) => {
+    document.querySelector('#' + window.soundSounerId).shadowRoot.getElementById('backgroundColorSelection').addEventListener('change', (e) => {
         backgroundColor = e.target.value;
         createWave()
     })
-    document.getElementById('barWidthSelection').addEventListener('change', (e) => {
+    document.querySelector('#' + window.soundSounerId).shadowRoot.getElementById('barWidthSelection').addEventListener('change', (e) => {
         barWidth = e.target.value;
         createWave()
     })
-    document.getElementById('barHeightSelection').addEventListener('change', (e) => {
+    document.querySelector('#' + window.soundSounerId).shadowRoot.getElementById('barHeightSelection').addEventListener('change', (e) => {
         barHeight = e.target.value;
         createWave()
     })
-    document.getElementById('barGapSelection').addEventListener('change', (e) => {
+    document.querySelector('#' + window.soundSounerId).shadowRoot.getElementById('barGapSelection').addEventListener('change', (e) => {
         barGap = e.target.value;
         createWave()
     })

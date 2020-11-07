@@ -19,7 +19,7 @@ const initRecorder = () => {
 
         // Init wavesurfer
         wavesurfer = WaveSurfer.create({
-            container: '#waverecorder',
+            container: document.querySelector('#' + window.soundSounerId).shadowRoot.querySelector('#waverecorder'),
             waveColor: 'black',
             interact: false,
             cursorWidth: 0,

@@ -11,8 +11,8 @@ let is_recording = false;
 let is_editing = false;
 
 const playerButtons = (enable) => {
-    play_boton = document.querySelector('#play-button')
-    const editor_buttons = document.querySelector('#wave-editor-buttons')
+    play_boton = document.querySelector('#' + window.soundSounerId).shadowRoot.querySelector('#play-button')
+    const editor_buttons = document.querySelector('#' + window.soundSounerId).shadowRoot.querySelector('#wave-editor-buttons')
     if (!enable) {
         hide(play_boton)
         hide(editor_buttons)
@@ -58,7 +58,7 @@ const grabar = () => {
     }
 }
 const createMenu = () => {
-    grabar_boton = document.querySelector('#grabar-button')
+    grabar_boton = document.querySelector('#' + window.soundSounerId).shadowRoot.querySelector('#grabar-button')
     grabar_boton.addEventListener('click', grabar)
     playerButtons(false)
 }

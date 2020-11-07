@@ -1,6 +1,6 @@
 const runInitialCountDown = () => {
-    const nums = document.querySelectorAll('.nums span');
-    const counter = document.querySelector('.counter');
+    const nums = document.querySelector('#' + window.soundSounerId).shadowRoot.querySelectorAll('.nums span');
+    const counter = document.querySelector('#' + window.soundSounerId).shadowRoot.querySelector('.counter');
     counter.style.display = 'block'
     return new Promise((resolve, reject) => {
         const time = 400;
